@@ -1,0 +1,49 @@
+<setion class="row">
+  <h1>Search for repairables</h1>
+</setion> 
+
+<setion class="row">
+<%= form_tag repairables_path, url: repairables_path, method: :get do %>
+  <%=text_field_tag :search %>
+  <%=submit_tag 'search', name: nil %>
+<% end %>
+</setion> 
+
+<%# <%= form_for , url: repairables_path, method: :get, class: 'form-inline' do |form| %>
+  <%# <%= form.text_field :query, value: params[:search].presence && params[:search][:query] %> 
+  <%# <%= form.text_field :search, input_html: {value: ""} %>
+  <%# <%= form.submit "Search", class: "btn btn-sm btn-primary", name: nil %>
+<%# <% end %> 
+<%# <input type="text" name="query" id="query" placeholder="I want to find..">
+<input type="submit" name="commit" value="Search" class="btn btn-default"> %>
+
+<setion class="row">
+
+<% unless @repairables.nil? %>
+  <% if @repairables.empty? %>
+    <h2>No repairables found matching your query.</h2>
+  <% else %>
+    <h2>Results</h2>
+
+    <table style="width: 100%;">
+      <thead>
+         <tr>
+           <th>Model</th>
+           <th>Manufacturer</th>
+           <th>Model Year</th>
+         </tr>
+      </thead>
+
+      <tbody>
+        <% @repairables.each do |repairable| %>
+          <tr>
+            <td><%= repairable.model %></td>
+            <td><%= repairable.manufacturer %></td>
+            <td><%= link_to 'View', product_path(repairable.id) %></td>
+          </tr>
+        <% end %>
+      <tbody>
+    </table>
+  <% end %>
+<% end %>
+</setion> 

@@ -1,0 +1,26 @@
+<%= javascript_pack_tag 'index' %>
+<div id="react-container">
+</div>
+
+<% unless @repairables.nil? %>
+<table style="width: 100%;">
+      <thead>
+         <tr>
+           <th>Model</th>
+           <th>Manufacturer</th>
+           <th>Model Year</th>
+         </tr>
+      </thead>
+
+      <tbody>
+        <% @repairables.each do |repairable| %>
+          <tr>
+            <td><%= repairable.model %></td>
+            <td><%= repairable.manufacturer %></td>
+            <td><%= repairable.model_year %></td>
+            <td><%= link_to 'View', repairable_path(repairable.id) %></td>
+          </tr>
+        <% end %>
+      <tbody>
+</table>
+<% end %>

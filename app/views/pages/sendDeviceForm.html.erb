@@ -1,0 +1,9 @@
+
+<%= content_tag :div,
+  id: "dataDiv",
+  data: @product.to_json(:include => :repairables) do %>
+<% end %>
+
+<div id="react-container">
+    <%= javascript_pack_tag 'indexSendDevice' %>
+</div>

@@ -1,0 +1,24 @@
+<h2>All Orders</h2>
+
+<% if @orders.length === 0 %>
+    No orders have been made.
+<% else %>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Order Number</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">Customer Email</th>
+                <th scope="col">Order Total</th>
+            </tr>
+        </thead>
+    <% @orders.each do |order| %>
+        <tr>
+            <th scope="col"><a href=<%= "/admin/orders/" + order.id.to_s %>><%= order.id %></a></th>
+            <th scope="col"><%= order.created_at %></th>
+            <th scope="col"><%= mail_to order.email %></th>
+            <th scope="col">$<%= '%.2f' % order.total %></th>
+        </tr>
+    <% end %>
+    </table>
+<% end %>

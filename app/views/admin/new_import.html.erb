@@ -1,0 +1,16 @@
+<h2>Bulk Product Upload</h2>
+<small class="text-muted">Want to create just one new product? <a href="/products/new">Try adding a single one instead.</a></small><br /><br />
+
+<div>
+Upload a .csv file containing rows of product data to create many new products at once.  Download and view a sample .csv to make sure you use the right formatting.
+</div>
+<br />
+
+<div class="container">
+<%= form_tag admin_import_path, multipart: true do %>
+    <div class="form-group">
+        <%= file_field_tag :file, class: "form-control" %><br />
+        <%= submit_tag "Upload CSV", class: "btn btn-primary" %>
+    </div>
+<% end %>
+</div>

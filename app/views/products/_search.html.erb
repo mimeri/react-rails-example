@@ -1,0 +1,26 @@
+
+<section class="row">
+    <h2>Search for products</h2>
+</section>
+
+<div class="row">
+    <%= form_tag products_path, url: products_path, method: :get do %>
+        <%= text_field_tag :search %>
+        <%=submit_tag 'search', name: nil %>
+    <% end %>
+</div> 
+
+<br />
+
+<% unless @products.nil? %>
+  <% if @products.empty? %>
+    <div class="row"> 
+        <h2>No products found matching your query.</h2>
+    </div>
+  <% else %>
+    <div class="row"> 
+        <%= render @products %>
+    </div>
+    <% end %>
+<% end %>
+

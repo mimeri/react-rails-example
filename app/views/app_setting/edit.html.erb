@@ -1,0 +1,41 @@
+<h2>Edit Global Settings</h2>
+<br />
+<%= form_for @setting do |form| %>
+  <div class="form-group row">
+    <%= form.label :serviceProviderLockedFactor, "Service Provider Locked Factor", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :serviceProviderLockedFactor, value: @setting.serviceProviderLockedFactor, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :wearLevelFactor, "Wear Level Factor", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :wearLevelFactor, value: @setting.wearLevelFactor, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :cloudLockedFactor, "Cloud Locked Factor", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :cloudLockedFactor, value: @setting.cloudLockedFactor, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :screenDefectFactor, "Screen Defect Factor", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :screenDefectFactor, value: @setting.screenDefectFactor, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :bootupDefectFactor, "Bootup Defect Factor", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :bootupDefectFactor, value: @setting.bootupDefectFactor, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :previousRepairFactor, "Previous Repair Factor", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :previousRepairFactor, value: @setting.previousRepairFactor, class: "form-control" %>
+    </div>
+  </div>
+  <%= form.submit class: "btn btn-primary" %>
+  <% end %>

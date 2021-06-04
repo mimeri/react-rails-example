@@ -1,0 +1,26 @@
+
+<section class="form_auth text-center">
+<h2 class="mb-3 font-weight-normal ">Sign in</h2>
+<br />
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.label :email, class: "sr-only" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email address" %>
+    <%= f.label :password, class: "sr-only" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password" %>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me, class: "checkbox" %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %>
+  </div>
+  
+<% end %>
+<br>
+<%= render "devise/shared/links" %>
+
+</section>

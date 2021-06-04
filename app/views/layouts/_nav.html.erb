@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/products">Buy a Device</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/repairables">Repair My Device</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sell My Device", sales_path, method: :get, :class => 'nav-link'%>
+      </li>
+    </ul>
+  </div>  
+  <div class="mx-auto order-0">
+    <a class="navbar-brand mx-auto" href="/">Somsaem</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <% if current_user && current_user.admin? %>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/products/new">Add Single Product</a>
+              <a class="dropdown-item" href="/admin/import">Add Multiple Products</a>
+              <a class="dropdown-item" href="/app_setting/1">Global Settings</a>
+              <a class="dropdown-item" href="/admin/orders">View Orders</a>
+          </li>
+      <% elsif current_user && !current_user.admin? %>
+        <li class="nav-item">
+          <%= link_to "My Cart", mycart_path, method: :get, :class => 'nav-link'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My Orders", myorders_path, method: :get, :class => 'nav-link'%>
+        </li>
+      <% end %>
+      <% if current_user %>
+        <li class="nav-item">
+          <%= link_to "Sign Out", destroy_session_path(current_user), method: :delete, :class => 'nav-link'%>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_up">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_in">Sign In</a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

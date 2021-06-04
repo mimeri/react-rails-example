@@ -1,0 +1,20 @@
+<h2>Summary for Order <%= @order.id %> by <%= @order.email %></h2>
+
+<br />
+<br />
+<table class="table">
+<thead class="thead-dark">
+<tr>
+<th scope="col">Product Name</th>
+<th scope="col">Price</th>
+</tr>
+</thead>
+<% @order.order_items.each do |item| %>
+    <tr>
+    <th scope="col"><%= item.product.name %></th>
+    <th scope="col">$<%= '%.2f' % item.product.price.to_i %></th>
+    </tr>
+<% end %>
+<th scope="col">Total</th>
+<th scope="col">$<%= '%.2f' % @order.total.to_i %></th>
+</table>

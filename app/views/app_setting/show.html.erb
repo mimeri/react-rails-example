@@ -1,0 +1,34 @@
+<h2>Global Settings | <%= link_to "Edit", edit_app_setting_path(@setting) %></h2>
+<br />
+<h3>Buy Price Calculator Settings</h3>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+    <th>Setting</th>
+    <th>Value</th>
+    </tr>
+    <tr>
+        <td>Service Provider Locked Factor</td>
+        <td><%= @setting.serviceProviderLockedFactor %></td>
+    </tr>
+    <tr>
+        <td>Wear Level Factor</td>
+        <td><%= @setting.wearLevelFactor %></td>
+    </tr>
+    <tr>
+        <td>Cloud Locked Factor</td>
+        <td><%= @setting.cloudLockedFactor %></td>
+    </tr>
+    <tr>
+        <td>Screen Defect Factor</td>
+        <td><%= @setting.screenDefectFactor %></td>
+    </tr>
+    <tr>
+        <td>Bootup Defect Factor</td>
+        <td><%= @setting.bootupDefectFactor %></td>
+    </tr>
+    <tr>
+        <td>Previous Repair Factor</td>
+        <td><%= @setting.previousRepairFactor %></td>
+    </tr>
+</table>

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  serviceProviderLockedFactor: 1.5
+  wearLevelFactor: 1.5
+  cloudLockedFactor: 1.5
+  screenDefectFactor: 1.5
+  bootupDefectFactor: 1.5
+  previousRepairFactor: 1.5
+  singleton_guard: 1
+
+two:
+  serviceProviderLockedFactor: 1.5
+  wearLevelFactor: 1.5
+  cloudLockedFactor: 1.5
+  screenDefectFactor: 1.5
+  bootupDefectFactor: 1.5
+  previousRepairFactor: 1.5
+  singleton_guard: 1

@@ -1,0 +1,32 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-6 product_img">
+        <% if @product.productimage.attached? %>
+        <img src="<%=(url_for(@product.productimage))%>" class="img-fluid">
+        <% else %>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Picture_Not_Yet_Available.png" class="img-fluid">
+        <% end %>
+    </div>
+    <div class="col-md-6 product_content">
+        <h4><%= @product.name %></h4>
+        <p><%= @product.description %></p>
+        <% if @product.quantity && (@product.quantity > 0) %>
+        <p><%= @product.quantity %> In Stock</p>
+        <h3 class="cost"><span class="glyphicon glyphicon-usd">$<%= '%.2f' % @product.price.to_i %></span><small class="pre-cost"><span class="glyphicon glyphicon-usd"></span></small></h3>
+        
+        <div class="space-ten"></div>
+        <br />
+        <div class="btn-ground">
+            <%= button_to 'Add to cart', line_items_path(product_id: @product.id), class: 'btn btn-primary' %>
+        </div>
+        <% else %>
+        <p>Out of Stock</p>
+        <% end %>
+    </div>
+</div>
+</div>
+
+<% if is_admin? %>
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+<% end %>

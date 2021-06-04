@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  <h2>Thank you for your order!</h2>
+  <small class="text-muted">Your summary for order number <%= @order.id %> appears below.  Please email us if you have any questions or concerns.</small>
+  <br />
+  <br />
+  <table class="table">
+  <thead class="thead-dark">
+  <tr>
+  <th scope="col">Product Name</th>
+  <th scope="col">Price</th>
+  </tr>
+  </thead>
+  <% @order.order_items.each do |item| %>
+      <tr>
+      <th scope="col"><%= item.product.name %></th>
+      <th scope="col">$<%= '%.2f' % item.product.price.to_i %></th>
+      </tr>
+  <% end %>
+  <th scope="col">Total</th>
+  <th scope="col">$<%= '%.2f' % @order.total.to_i %></th>
+  </table>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<% if product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: product, local: true) do |form| %>
+  <h3>Product Information</h3>
+  <div class="form-group row">
+    <%= form.label :name, "Name", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :name, placeholder: "Name", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :description, "Description", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_area :description, placeholder: "Name", class: "form-control" %><br />
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :manufacturer, "Manufacturer", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :manufacturer, placeholder: "Name", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :model, "Model", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :model, placeholder: "Name", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :productimage, "Product Image", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.file_field :productimage, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">Do you want to...</div>
+    <div class="col-sm-10">
+      <div class="form-check">
+
+        <%= form.check_box :is_selling, class: "form-check-input" %>
+        <label class="form-check-label" for="gridCheck1">
+          ...sell the product?
+        </label>
+      </div>
+      <div class="form-check">
+        <%= form.check_box :is_buying, class: "form-check-input" %>
+        <label class="form-check-label" for="gridCheck1">
+          ...buy the product?
+        </label>
+      </div>
+      <div class="form-check">
+        <%= form.check_box :is_repairable, class: "form-check-input" %>
+        <label class="form-check-label" for="gridCheck1">
+          ...repair the product?
+        </label>
+      </div>
+    </div>
+  </div>
+  <h4>Sell</h4>
+  <div class="form-group row">
+    <%= form.label :quantity, "Quantity", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :quantity, placeholder: "Name", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= form.label :price, "Price", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :price, placeholder: "Name", class: "form-control" %>
+    </div>
+  </div>
+  <h4>Buy</h4>
+  <div class="form-group row">
+    <%= form.label :base_price, "Base Buy Price", :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= form.text_field :base_price, placeholder: "Name", class: "form-control" %>
+    </div>
+  </div>
+  <h4>Repair</h4>
+  <%= form.fields_for :repairables do |repairable_attributes|%>
+    <div class="form-group row">
+      <%= repairable_attributes.label :repair_name, "Name", :class => "col-sm-2 col-form-label" %>
+      <div class="col-sm-6">
+        <%= repairable_attributes.text_field :repair_name, placeholder: "Name", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= repairable_attributes.label :estimated_time, "Estimated Time to Repair (hours)", :class => "col-sm-2 col-form-label" %>
+      <div class="col-sm-6">
+        <%= repairable_attributes.text_field :estimated_time, placeholder: "Name", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= repairable_attributes.label :repair_price, "Price", :class => "col-sm-2 col-form-label" %>
+      <div class="col-sm-6">
+        <%= repairable_attributes.text_field :repair_price, placeholder: "Name", class: "form-control" %>
+      </div>
+    </div>
+  <% end %>
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>
